@@ -1,25 +1,35 @@
 # Animator5D
 Very simple-to-use framework for rendering 5-dimensional animations (x, y, z, time, some color value) as an animated gif. This requires ImageMagick to combine the frames, but you can still render them without having it installed and just combine them with some online gif maker.
 
+## Example rendering
+Below is a rendering made using this package.
+![EM shower in the CMS HGcal](http://giant.gfycat.com/FickleHauntingHairstreak.gif)
+
+## Installation
+I'm working on getting this package on pip for easy installation. For the moment though, download this repository in a zip file, unzip it, and copy the Animator5D folder to the same directory as the program calling it. You can delete the SampleData folder if you want, as well, though it's nice to play around with. :P
+
 ## Usage
 This package is designed to be very easy to use, but also to allow you a full range of customization options. At the very least, you can simply use:
 ```python
 from Animator5D import animate
 animate(data)
 ```
-Literally, that's it. The package will automatically calculate all of the needed quantitites simply from this statement. However, if you care about customizing the plot a bit more, you can configure the options with almost the same degrees of freedom as if you had coded the entire package yourself. Below is a list of the available options you can configure.
+Literally, that's it. 
+The package will automatically calculate all of the needed quantitites simply from this statement. However, if you care about customizing the plot a bit more, you can configure the options with almost the same degrees of freedom as if you had coded the entire package yourself. Below is a list of the available options you can configure.
 
 This code uses structured numpy arrays ([numpy.recarray](http://docs.scipy.org/doc/numpy/reference/generated/numpy.recarray.html)) as the data input. They are basically dictionaries with lists as their values, and I find them a very convenient way to work with complex data sets, rather than having to remember what order x, y, z, t, and w are in and enter them in that order. It is very easy to convert standard numpy arrays to numpy recarrays, by using [numpy.core.records.fromarrays](http://docs.scipy.org/doc/numpy/reference/generated/numpy.core.records.fromarrays.html).
+
+In the program's `if __name__ == "__main__"` block, I've included two examples and their associated sample data files, with minimum and near maximum usage verbosity. Play around with them if you want.
 
 Full list of parameters and usage (some non-boolean functions are initialized to a boolean value to indicate they should be automatically calculated):
 
     Usage:  Min. complexity:    animate(data)
             Max. complexity:    animate(data, title="Animator5D", path="Animator5D Rendering", tstep=False, 
-                                  xname='x', yname='y', zname='z', wname='w', tname='t', 
-                                  xlim=False, ylim=False, zlim=False, wlim=False, tlim=False, 
-                                  xlabel='x', ylabel='y', zlabel='z', wlabel='w', tlabel='units', 
-                                  projections=True, transparency=False, delete=False, quiet=False, 
-                                  scalesize=True, msize=100, marker=",", renderframes=True)
+                                    xname='x', yname='y', zname='z', wname='w', tname='t', 
+                                    xlim=False, ylim=False, zlim=False, wlim=False, tlim=False, 
+                                    xlabel='x', ylabel='y', zlabel='z', wlabel='w', tlabel='units', 
+                                    projections=True, transparency=False, delete=False, quiet=False, 
+                                    scalesize=True, msize=100, marker=",", renderframes=True)
 
     Arguments:      data    np.recarray: structured array containing x, y, z, t, w data labeled with
                                     'x', 'y', 'z', 't', 'w'. (You can easily modify this to just be  
@@ -59,3 +69,4 @@ Full list of parameters and usage (some non-boolean functions are initialized to
                     renderframes    Bool: whether or not to use render the frames to a single
                                           animated gif. Requires ImageMagick to render frames.
                                           Default: True
+
