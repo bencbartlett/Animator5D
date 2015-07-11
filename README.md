@@ -8,6 +8,8 @@ Below is a rendering made using this package.
 ## Installation
 I'm working on getting this package on pip for easy installation. For the moment though, download this repository in a zip file, unzip it, and copy the Animator5D folder to the same directory as the program calling it. You can delete the SampleData folder if you want, as well, though it's nice to play around with. :P
 
+Additionally, this package requires ImageMagick to render the frames into a single gif. Installation instructions (it's easy, I promise) can be found [here](http://www.imagemagick.org/script/binary-releases.php). If you don't have/want to install ImageMagick, you can still render the frames and combine them with some online gif maker using `animate(data, renderframes=False)`.
+
 ## Usage
 This package is designed to be very easy to use, but also to allow you a full range of customization options. At the very least, you can simply use:
 ```python
