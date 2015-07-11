@@ -23,7 +23,13 @@ def animate(data, title="Animator5D", path="Animator5D Rendering", tstep=False,
                   scalesize=True, msize=100, marker=",", renderframes=True):
 
     '''
-    Usage: animate(data, title, tstep).
+    Usage:          animate(data)
+                    animate(data, title="Animator5D", path="Animator5D Rendering", tstep=False, 
+                                  xname='x', yname='y', zname='z', wname='w', tname='t', 
+                                  xlim=False, ylim=False, zlim=False, wlim=False, tlim=False, 
+                                  xlabel='x', ylabel='y', zlabel='z', wlabel='w', tlabel='units', 
+                                  projections=True, transparency=False, delete=False, quiet=False, 
+                                  scalesize=True, msize=100, marker=",", renderframes=True)
 
     Arguments:      data    np.recarray: structured array containing x, y, z, t, w data labeled with
                                     'x', 'y', 'z', 't', 'w'. (You can easily modify this to just be  
