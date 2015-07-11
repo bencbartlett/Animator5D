@@ -19,9 +19,21 @@ animate(data)
 Literally, that's it. 
 The package will automatically calculate all of the needed quantitites simply from this statement. However, if you care about customizing the plot a bit more, you can configure the options with almost the same degrees of freedom as if you had coded the entire package yourself. Below is a list of the available options you can configure.
 
+## Data structure
 This code uses structured numpy arrays ([numpy.recarray](http://docs.scipy.org/doc/numpy/reference/generated/numpy.recarray.html)) as the data input. They are basically dictionaries with lists as their values, and I find them a very convenient way to work with complex data sets, rather than having to remember what order x, y, z, t, and w are in and enter them in that order. It is very easy to convert standard numpy arrays to numpy recarrays, by using [numpy.core.records.fromarrays](http://docs.scipy.org/doc/numpy/reference/generated/numpy.core.records.fromarrays.html).
 
+In general, the data should consist of n number of "samples" containing an x, y, z, t, and w property each (you can configure what properties these go to). For example, a valid data set could be:
+```python
+array([ (49.29, -20.74, 339.42, 1.14, 1.05, 12.67, 1),
+        (49.06, -20.06, 340.49, 1.19, 1.05, 12.73, 1)],
+      dtype=[('x', '<f8'), ('y', '<f8'), ('z', '<f8'), ('RandomProperty1', '<f8'), 
+            ('t', '<f8'), ('w','<f8'), ('RandomProperty2', '<i8')])
+```
+In this case, at most two frames could be plotted (two events), and it would use the variables x, y, z, t, and w in the plot, discarding `RandomProperty1` and `RandomProperty2`. You can also have different names for x, y, etc. by specifying `xname=<name>` in the `animate()` call.
+
 In the program's `if __name__ == "__main__"` block, I've included two examples and their associated sample data files, with minimum and near maximum usage verbosity. Play around with them if you want.
+
+## Documentation
 
 Full list of parameters and usage (some non-boolean functions are initialized to a boolean value to indicate they should be automatically calculated):
 
